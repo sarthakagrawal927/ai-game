@@ -56,6 +56,10 @@ Runs typecheck, lint, unit tests, and the 3D build.
 
 Living north-star (deferred): `docs/archive/future-prd-deferred-north-star-2026-06-12.md`. Gated on `docs/core-gameplay-fix.md` playtest bar — not an active sprint.
 
+### Asset references
+
+- [kitbitz.art](https://kitbitz.art) — future asset reference (from issue #27)
+
 ## Active AI Task Log
 
 This section is maintained by the SaaS Maker Active-AI product/design loop so future agents do not reopen duplicate UI tasks.
