@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-07-18
+Last updated: 2026-09-07
 
 > Short current view. For the deep timeline + feature log, see
 > [`PROJECT_STATUS.md`](./PROJECT_STATUS.md). For the docs index, see
@@ -9,16 +9,18 @@ Last updated: 2026-07-18
 ## Current objective
 
 Aliveville is a browser-playable AI world simulator at aliveville.com/game.
-The current portfolio state is **support / capped experiment**. The
+The current portfolio state is **inactive / held experiment**. The
 Rival-readiness milestone is closed for now under an explicit product-owner
 deferment. No human fun/not-fun verdict was recorded; require one before
 resuming feature expansion.
 
 ## Active work
 
-- **Documentation consolidation** — this knowledge system (in progress,
-  2026-07-18): reorganized `docs/` into a canonical structure and split ADRs
-  into individual files with validation.
+- **Bounded setup repair** — local qualification complete (2026-09-07): the
+  clock stays paused through setup; the scripted talk, memory, save and restore
+  path passed. [Evidence](docs/current/setup-and-memory-qualification-2026-09-07.md).
+- **Documentation consolidation** — complete; canonical structure and links
+  validated. No open GitHub issues or PRs remain; no tasks were closed by this audit.
 - **Rival guided onboarding** — shipped (capped 2026-07-13). The move →
   talk → fight → consequence guide is wired; the human playtest verdict is
   deferred.
@@ -44,7 +46,7 @@ resuming feature expansion.
 - Is a published docs domain (docs.aliveville.com) warranted, or are the
   committed Markdown files sufficient for now?
 
-## Next steps
+## Retained future ideas (deferred)
 
 1. Conduct a fresh Rival session without developer help; record the
    fun/not-fun verdict plus any confusion, combat-feel, or consequence-
@@ -54,7 +56,7 @@ resuming feature expansion.
    (`web3d/` HUD + `src/` economy actions).
 3. Add interior depth: quest NPC inside an anchor building, interior
    interactables/clues (`web3d/src/interiors/`).
-4. Enable cloud LLM mode when ready: add `LLM_API_KEY` to `.env` /
-   `npx wrangler secret put LLM_API_KEY`.
+4. Qualify model-backed dialogue only under an explicitly configured and
+   approved local/provider setup; the scripted run is not model proof.
 5. Real-device verification of frontier GPU/AI/TTS features; deploy frontier
    build to prod when ready.

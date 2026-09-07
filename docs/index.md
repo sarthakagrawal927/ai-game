@@ -90,6 +90,8 @@ repository. The committed Markdown here is the source of truth.
 
 ## Current
 
+- [Setup and memory qualification](./current/setup-and-memory-qualification-2026-09-07.md) — bounded local runtime receipts and remaining sharing gates.
+
 - [core-gameplay-fix.md](./current/core-gameplay-fix.md) — capped milestone plan (the gate for north-star work).
 - [roadmap.md](./current/roadmap.md) — 2026-06-13 paused roadmap snapshot.
 

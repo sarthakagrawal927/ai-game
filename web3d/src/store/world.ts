@@ -39,6 +39,7 @@ interface WorldStore {
   importing: boolean;
   lastNpcInitiationAt: number;
   init: () => Promise<void>;
+  syncAgentLoopForPhase: () => Promise<void>;
   connectLive: () => () => void;
   send: (action: PlayerAction) => Promise<TickSummary | null>;
   refreshAgentLoopStatus: () => Promise<AgentLoopStatus | null>;
@@ -174,20 +175,26 @@ export const useWorldStore = create<WorldStore>((set, get) => ({
     try {
       const world = await fetchState();
       set({ world, loading: false });
-      const status = await fetchAgentLoopStatus();
-      const shouldRun = shouldAutostartAgentLoop(world.id, browserRivalGuideStorage());
-      if (!shouldRun) {
-        const stopped = status.state === 'running' ? await setAgentLoopRunning(false) : status;
-        set({ agentLoopRunning: false, agentLoopStatus: stopped });
-      } else if (status.state === 'running') {
-        set({ agentLoopRunning: true, agentLoopStatus: status });
-      } else {
-        // the world is alive by default — the HUD chip is a pause override
-        const started = await setAgentLoopRunning(true);
-        set({ agentLoopRunning: started.state === 'running', agentLoopStatus: started });
-      }
+      await get().syncAgentLoopForPhase();
     } catch (error) {
       set({ error: (error as Error).message, loading: false });
+    }
+  },
+
+  async syncAgentLoopForPhase() {
+    const world = get().world;
+    if (!world) return;
+    try {
+      const status = await fetchAgentLoopStatus();
+      // Choosing a world or character must not consume the player's world time.
+      const shouldRun =
+        useUiStore.getState().gamePhase === 'playing' &&
+        shouldAutostartAgentLoop(world.id, browserRivalGuideStorage());
+      const next =
+        (status.state === 'running') === shouldRun ? status : await setAgentLoopRunning(shouldRun);
+      set({ agentLoopRunning: next.state === 'running', agentLoopStatus: next });
+    } catch (error) {
+      set({ error: (error as Error).message });
     }
   },
 

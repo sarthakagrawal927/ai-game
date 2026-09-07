@@ -1,0 +1,156 @@
+{
+  "schema": "aliveville.local-qualification.v1",
+  "observedAt": "2026-09-07",
+  "baseRevision": "5f9390a05a09d0fd1ce2c49f2272518adcbb7425",
+  "mode": "Local scripted simulation with original bundled fictional worlds. No AI model/provider qualification.",
+  "before": {
+    "before": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 8,
+        "day": 1
+      },
+      "pressure": 18,
+      "loop": "running"
+    },
+    "after": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 8.5,
+        "day": 1
+      },
+      "pressure": 22,
+      "loop": "running"
+    },
+    "character": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 8.75,
+        "day": 1
+      },
+      "pressure": 24,
+      "loop": "running"
+    }
+  },
+  "after": {
+    "title": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 8,
+        "day": 1
+      },
+      "pressure": 18,
+      "loop": "idle"
+    },
+    "titleAfter": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 8,
+        "day": 1
+      },
+      "pressure": 18,
+      "loop": "idle"
+    },
+    "character": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 18,
+        "day": 1
+      },
+      "pressure": 0,
+      "loop": "idle"
+    },
+    "characterAfter": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 18,
+        "day": 1
+      },
+      "pressure": 0,
+      "loop": "idle"
+    },
+    "playing": {
+      "clock": {
+        "hoursPerTick": 0.25,
+        "hour": 18.5,
+        "day": 1
+      },
+      "pressure": 4,
+      "loop": "running"
+    }
+  },
+  "builtClient": {
+    "status": "passed",
+    "title": {
+      "tick": 0,
+      "pressure": 18,
+      "loop": "idle"
+    },
+    "titleAfter": {
+      "tick": 0,
+      "pressure": 18,
+      "loop": "idle"
+    },
+    "character": {
+      "tick": 0,
+      "pressure": 0,
+      "loop": "idle"
+    },
+    "characterAfter": {
+      "tick": 0,
+      "pressure": 0,
+      "loop": "idle"
+    },
+    "playing": {
+      "tick": 2,
+      "pressure": 4,
+      "loop": "running"
+    }
+  },
+  "coreLoop": {
+    "state": "passed",
+    "movement": "Actual keyboard movement toward Pip, followed by E interaction. No position/world injection.",
+    "initialDistance": 3.7686290332188497,
+    "finalDistance": 1.8192425089141249,
+    "dialogue": "P\nPip\nerrand-running child who repeats everything\n\ud83d\udd08\n\u2715\nWanderer: Any news?\nPip: Quiet enough around here, for now. A rare calm day, all told.\nAny news?\nWhat's troubling you?\nGoodbye.",
+    "beforeMemoryCount": 0,
+    "memoryMatches": [
+      {
+        "npcId": "pip",
+        "text": "A visitor asked me for news.",
+        "tick": 8
+      }
+    ],
+    "restoredMemoryMatches": [
+      {
+        "npcId": "pip",
+        "text": "A visitor asked me for news.",
+        "tick": 8
+      }
+    ],
+    "saveRestore": "Clicked Save game, observed Saved, reloaded browser page, selected actual OPFS save. Restored server state contains memory.",
+    "pageErrors": []
+  },
+  "visualReview": {
+    "reviewer": "Codex image inspection",
+    "status": "passed for rendered town and legible scripted conversation",
+    "images": [
+      "town-rendered.png",
+      "talk-memory.png"
+    ],
+    "performance": "Headless SwiftShader; observed 6-11 FPS is not a real GPU benchmark."
+  },
+  "checks": {
+    "verifyReadiness": "passed",
+    "testCount": 474,
+    "testFiles": 64,
+    "focusedTests": 16,
+    "docs": "passed"
+  },
+  "gates": [
+    "No deployment/live verification",
+    "No model-backed freeform dialogue, voice or long-term recall proof",
+    "Existing UI says cloud LLM even in this scripted mode",
+    "Core fun verdict, pacing, prompt model downloads and font availability need further review"
+  ]
+}

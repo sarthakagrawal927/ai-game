@@ -3,17 +3,24 @@
 **Portfolio state (2026-07-25): Ignored / inactive.** No routine work or
 planning remains. Explicit reactivation is required before feature work.
 
-Last updated: 2026-08-05
+Last updated: 2026-09-07
+
+## 2026-09-07 bounded qualification
+
+Setup no longer advances autonomous time before play. Local scripted dialogue,
+NPC memory, browser save and restore were exercised; full readiness passed
+474 tests across 64 files. [Evidence and remaining gates](docs/current/setup-and-memory-qualification-2026-09-07.md).
+No deployment or reactivation of the deferred roadmap occurred.
 
 ## Why / What
 
 **AliveVille** is a browser-playable AI world simulator at **aliveville.com/game**. The product thesis: a living town where autonomous NPC agents, quests, combat, and LLM dialogue make a small district feel alive — not a tech demo of frontier APIs.
 
-**Repository naming:** local checkout is `ai-game`; GitHub repository is `sarthakagrawal927/aliveville`; public product name is AliveVille.
+**Repository naming:** local checkout is `aliveville` (historically `ai-game`); GitHub repository is `sarthakagrawal927/aliveville`; public product name is AliveVille.
 
 **Users:** Players exploring a 3D anime-chibi town; fleet operators deploying the sim edge stack; future creators importing fandom/original worlds.
 
-**Constraints:** Active engineering is gated on core playability (`docs/core-gameplay-fix.md` §5 — "The Rival" vertical slice, guided first 60s, fun verdict). XL north-star work (asset pipeline, creator platform, Chronicle maturity) stays parked until that bar clears. `astro-landing/` is live marketing — do not modify.
+**Constraints:** Active engineering is gated on core playability (`docs/current/core-gameplay-fix.md` §5 — "The Rival" vertical slice, guided first 60s, fun verdict). XL north-star work (asset pipeline, creator platform, Chronicle maturity) stays parked until that bar clears. `astro-landing/` is live marketing — do not modify.
 
 **IN scope:** 3D client (`web3d/`), simulation server (`src/`), Cloudflare Worker edge (`worker/`), probes, headless playtests.
 

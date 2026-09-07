@@ -54,7 +54,7 @@ Runs typecheck, lint, unit tests, and the 3D build.
 <!-- ACTIVE-AI-TASK-LOG:START -->
 ## Future Vision
 
-Living north-star (deferred): `docs/archive/future-prd-deferred-north-star-2026-06-12.md`. Gated on `docs/core-gameplay-fix.md` playtest bar — not an active sprint.
+Living north-star (deferred): `docs/archive/future-prd-deferred-north-star-2026-06-12.md`. Gated on `docs/current/core-gameplay-fix.md` playtest bar — not an active sprint.
 
 ### Asset references
 
@@ -66,9 +66,33 @@ This section is maintained by the SaaS Maker Active-AI product/design loop so fu
 
 - Business lane: Core/status context
 - Rule: do not create another broad "improve the UI" task unless the acceptance criteria differ materially from the tasks listed here.
-- Source of truth for task status: SaaS Maker task board. README entries are durable context only.
+- Current task authority: this repository’s GitHub Issues. The completed entry below is historical context.
 
 | Task | Status | Priority | Last known note |
 | --- | --- | --- | --- |
 | `a31f2db5` [fleet-audit] ai-game CI failing on main | done | high | 2026-06-04 09:21:38 |
 <!-- ACTIVE-AI-TASK-LOG:END -->
+
+## Retained work and verified local scope
+
+The 2026-09-07 repair holds the autonomous clock during world and character
+selection, then starts it when play begins. Rival tutorial gating remains intact.
+A local Lanternmere run rendered six NPCs, walked to Pip, completed a scripted
+conversation, recorded NPC memory, saved to the browser, and restored that memory
+after reload. [Receipts and limits](docs/current/setup-and-memory-qualification-2026-09-07.md).
+
+**Task reconciliation: 0 open issues, 0 open PRs, 0 closures.** This remains an
+inactive experiment. Local evidence does not reopen the deferred roadmap or
+qualify the deployed game. Retain these gates:
+
+- A human fun/not-fun verdict for the Rival loop and understandable pacing;
+  setup protection does not establish that the game is compelling.
+- An authorized deployment and a fresh live-session verification of this fix.
+- Worker/local-server parity, including browser-save restoration via `/api/load`.
+- Model-backed conversation, long-term recall, and real-device voice/GPU checks.
+  The scripted-mode HUD still says "cloud LLM"; that label is not evidence that
+  a model ran. Automatic model preloads and external font availability also need
+  review before claiming a resilient guest experience.
+
+The previously listed documentation consolidation is complete and validated;
+future vendor/shop and interior ideas remain deferred behind the human verdict.

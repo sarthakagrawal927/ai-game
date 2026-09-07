@@ -25,6 +25,10 @@ export function App() {
   }, [init]);
 
   useEffect(() => {
+    void useWorldStore.getState().syncAgentLoopForPhase();
+  }, [gamePhase]);
+
+  useEffect(() => {
     const disconnect = useWorldStore.getState().connectLive();
     return disconnect;
   }, []);
