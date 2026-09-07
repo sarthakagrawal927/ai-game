@@ -81,7 +81,9 @@ A local Lanternmere run rendered six NPCs, walked to Pip, completed a scripted
 conversation, recorded NPC memory, saved to the browser, and restored that memory
 after reload. [Receipts and limits](docs/current/setup-and-memory-qualification-2026-09-07.md).
 
-**Task reconciliation: 0 open issues, 0 open PRs, 0 closures.** This remains an
+**Task reconciliation: [1 open qualification issue (#30)](https://github.com/sarthakagrawal927/aliveville/issues/30), 0 open PRs.**
+The owner review closed optional [ImgBot PR #29](https://github.com/sarthakagrawal927/aliveville/pull/29)
+without merging; that is a declined compression change, not product completion. This remains an
 inactive experiment. Local evidence does not reopen the deferred roadmap or
 qualify the deployed game. Retain these gates:
 
@@ -92,8 +94,11 @@ qualify the deployed game. Retain these gates:
 - Model-backed conversation, long-term recall, and real-device voice/GPU checks.
   The HUD now reports scripted dialogue from the server response, keeps unknown
   mode explicit, and labels server AI as configured rather than verified.
-  Automatic model preloads and external font availability still need review
-  before claiming a resilient guest experience.
+  Automatic model preloads still need review. Font failure now leaves the local
+  3D geometry and movement available; optional labels can remain absent.
+  The bounded, scrollable event log deduplicates repeated notices without
+  covering the objective or cutting off unique events. See the
+  [font and notice regression receipts](docs/current/setup-and-memory-qualification-2026-09-07.md#font-and-notice-resilience-follow-up).
 
 The previously listed documentation consolidation is complete and validated;
 future vendor/shop and interior ideas remain deferred behind the human verdict.

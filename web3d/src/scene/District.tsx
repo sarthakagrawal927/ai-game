@@ -1,4 +1,5 @@
-import { Billboard, Outlines, Text } from '@react-three/drei';
+import { SceneText } from '../scene/SceneText.tsx';
+import { Billboard, Outlines } from '@react-three/drei';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { memo, Suspense, useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
@@ -60,7 +61,7 @@ export const District = memo(function District({
       ))}
       {/* billboard: a flat Text reads mirrored from behind */}
       <Billboard position={[cx, 11, cz]}>
-        <Text
+        <SceneText
           fontSize={1.1}
           color="#ffffff"
           outlineWidth={0.06}
@@ -69,7 +70,7 @@ export const District = memo(function District({
           fillOpacity={0.85}
         >
           {district.name}
-        </Text>
+        </SceneText>
       </Billboard>
     </group>
   );

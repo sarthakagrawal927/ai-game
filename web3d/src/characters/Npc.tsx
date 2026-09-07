@@ -1,4 +1,5 @@
-import { Billboard, Text } from '@react-three/drei';
+import { SceneText } from '../scene/SceneText.tsx';
+import { Billboard } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -406,7 +407,7 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
               depthWrite={false}
             />
           </mesh>
-          <Text
+          <SceneText
             fontSize={0.13}
             maxWidth={Math.min(2.4, 0.5 + banter.text.length * 0.024)}
             color={banter.confrontation ? '#ffb3a8' : '#e8ecf5'}
@@ -417,11 +418,11 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
             textAlign="center"
           >
             {banter.text}
-          </Text>
+          </SceneText>
         </Billboard>
       ) : null}
       <Billboard ref={labelRef} position={[0, 2.2, 0]}>
-        <Text
+        <SceneText
           fontSize={0.19}
           color={defeated ? '#8b93a3' : hostile ? '#ff7a6a' : '#e8ecf5'}
           fillOpacity={0.92}
@@ -431,9 +432,9 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
           anchorX="center"
         >
           {npc.name}
-        </Text>
+        </SceneText>
         {hasOpenQuest && !defeated && !hostile ? (
-          <Text
+          <SceneText
             position={[0, 0.34, 0]}
             fontSize={0.4}
             color="#ffd84d"
@@ -442,7 +443,7 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
             anchorX="center"
           >
             !
-          </Text>
+          </SceneText>
         ) : null}
         {hostile && enemy ? (
           <group position={[0, 0.32, 0]}>
@@ -457,7 +458,7 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
           </group>
         ) : null}
         {lockedOn && !defeated ? (
-          <Text
+          <SceneText
             position={[0, 0.62, 0]}
             fontSize={0.34}
             color="#ffd84d"
@@ -466,7 +467,7 @@ export function Npc({ npc, worldId, spawn, model, quests, staticMode }: NpcProps
             anchorX="center"
           >
             ◆
-          </Text>
+          </SceneText>
         ) : null}
       </Billboard>
     </group>

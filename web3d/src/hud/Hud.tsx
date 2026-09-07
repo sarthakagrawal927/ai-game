@@ -249,8 +249,20 @@ export function Hud() {
 
       <FrontierHud />
 
-      <div className="objective">
-        <span className="objective-label">Objective</span> {nextObjective(world)}
+      <div className="world-notices">
+        <div className="objective">
+          <span className="objective-label">Objective</span> {nextObjective(world)}
+        </div>
+        {events.length > 0 ? (
+          // biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access to the bounded scrollable event log.
+          <div className="toasts" role="log" aria-label="Recent world events" tabIndex={0}>
+            {events.map((event) => (
+              <div key={event.id} className={`toast ${event.fromDirector ? 'director' : ''}`}>
+                {event.text}
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       {(() => {
@@ -267,14 +279,6 @@ export function Hud() {
           </div>
         );
       })()}
-
-      <div className="toasts">
-        {events.slice(-5).map((event) => (
-          <div key={event.id} className={`toast ${event.fromDirector ? 'director' : ''}`}>
-            {event.text}
-          </div>
-        ))}
-      </div>
 
       {target && !dialogueNpcId ? (
         <div className="prompt">

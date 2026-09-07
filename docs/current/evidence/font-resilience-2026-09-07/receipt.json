@@ -1,0 +1,32 @@
+{
+  "mode": "local scripted; all external requests blocked; notice fixture injected",
+  "before": {
+    "x": 82.49990296452961,
+    "y": 0.050099024943483506,
+    "z": 64.19997572732211,
+    "npcs": 5
+  },
+  "after": {
+    "x": 78.99564588069916,
+    "y": 0.05009998806926885,
+    "z": 64.1999740600586,
+    "npcs": 5
+  },
+  "distance": 3.504257083830849,
+  "blockedHosts": [
+    "fonts.googleapis.com",
+    "us-assets.i.posthog.com",
+    "huggingface.co",
+    "us.i.posthog.com",
+    "cdn.jsdelivr.net"
+  ],
+  "blockedFontLookup": "cdn.jsdelivr.net/gh/lojjic/unicode-font-resolver@v1.0.1/packages/data/codepoint-index/plane0/0-ff.json",
+  "layout": {
+    "objectiveBottom": 118,
+    "noticesTop": 126,
+    "height": 160,
+    "scrollHeight": 282,
+    "clientHeight": 160
+  },
+  "uniqueNotices": 8
+}

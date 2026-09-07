@@ -1,4 +1,5 @@
-import { Billboard, Text } from '@react-three/drei';
+import { SceneText } from '../scene/SceneText.tsx';
+import { Billboard } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
@@ -69,7 +70,7 @@ function DamageNumber({ event }: { event: VfxEvent }) {
   return (
     <group ref={group} position={[event.x, event.y + 0.4, event.z]}>
       <Billboard>
-        <Text
+        <SceneText
           fontSize={0.42}
           color={event.color}
           outlineWidth={0.04}
@@ -78,7 +79,7 @@ function DamageNumber({ event }: { event: VfxEvent }) {
           fontWeight="bold"
         >
           {event.text ?? ''}
-        </Text>
+        </SceneText>
       </Billboard>
     </group>
   );

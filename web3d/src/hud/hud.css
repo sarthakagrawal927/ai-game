@@ -2865,3 +2865,26 @@
 .objective {
   top: 46px;
 }
+
+/* Keep the objective above a bounded, scrollable list, regardless of text wrapping. */
+.world-notices {
+  position: absolute;
+  top: 46px;
+  right: 16px;
+  width: min(350px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.world-notices .objective,
+.world-notices .toasts {
+  position: static;
+  max-width: none;
+}
+
+.world-notices .toasts {
+  max-height: min(160px, 25vh);
+  overflow-y: auto;
+  pointer-events: auto;
+}

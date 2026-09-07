@@ -83,6 +83,22 @@ async function resetCombatForWorld(): Promise<void> {
   useUiStore.getState().setInteractionTarget(null);
 }
 
+/** Collapse repeated notices while retaining every distinct event and its original expiry. */
+export function mergeWorldEvents(
+  current: WorldEvent[],
+  incoming: WorldEvent[],
+  now = performance.now()
+): WorldEvent[] {
+  const seen = new Set<string>();
+  return [...current, ...incoming].filter((event) => {
+    if (event.expiresAt <= now) return false;
+    const key = JSON.stringify([event.actionType, event.fromDirector, event.text.trim()]);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function toastsFrom(summary: TickSummary): WorldEvent[] {
   const now = performance.now();
   return summary.actions.map((entry): WorldEvent => {
@@ -209,7 +225,7 @@ export const useWorldStore = create<WorldStore>((set, get) => ({
             set({
               world,
               lastSummary: summary,
-              events: [...get().events, ...toastsFrom(summary)],
+              events: mergeWorldEvents(get().events, toastsFrom(summary)),
               agentLoopStatus: agentLoopStatus ? { ...agentLoopStatus, lastTick: summary } : null,
             });
             useDirectorStore.getState().maybeTriggerFromSummary(summary, prevWorld, world);
@@ -252,7 +268,7 @@ export const useWorldStore = create<WorldStore>((set, get) => ({
       set({
         world: res.state,
         lastSummary: res.summary,
-        events: [...get().events, ...toastsFrom(res.summary)],
+        events: mergeWorldEvents(get().events, toastsFrom(res.summary)),
         sending: false,
         error: null,
       });
@@ -296,7 +312,7 @@ export const useWorldStore = create<WorldStore>((set, get) => ({
       set({
         world: res.state,
         lastSummary: res.summary,
-        events: [...get().events, ...toastsFrom(res.summary)],
+        events: mergeWorldEvents(get().events, toastsFrom(res.summary)),
         agentLoopRunning: res.status.state === 'running',
         agentLoopStatus: res.status,
         error: null,

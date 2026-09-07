@@ -129,3 +129,57 @@ requires an authorized deployment and live verification, Worker parity,
 model-backed conversation/recall checks, real-device GPU/voice evidence, and
 review of automatic model preloads and font resilience. The deferred north-star,
 vendor/shop, and interior ideas remain behind those gates.
+
+
+## Font and notice resilience follow-up
+
+Each optional 3D text label now has its own loading/error boundary. A blocked
+font lookup can remove the label without suspending the district, NPC, player
+physics or combat geometry. No fonts, models or dependencies were added.
+Repeated notice text of the same action type and director category collapses
+within its original six-second lifetime, including repetitions across NPCs.
+Distinct notices remain in a keyboard-scrollable list bounded to 160px/25vh;
+the objective sits above it in normal layout rather than overlapping it.
+
+`tests/playtests/font-resilience.ts` runs against a local scripted Vite/server
+pair. It uses fresh isolated Chrome, aborts every external request, and checks
+that the actual jsDelivr Unicode font lookup was blocked. It waits for live NPC
+registration and a physical player position, sends movement keys, and asserts
+movement greater than 0.5 world units. The notice portion injects three identical
+Bram notices and seven unique director notices through the real merge helper;
+one Bram notice and all seven unique notices must remain accessible. A pending
+real simulation event can also arrive; the regression does not discard it.
+The test asserts that the notice log starts below the objective and scrolls
+within its height bound. Browser cleanup runs in `finally`.
+
+Reproduce with a clean environment and no provider configuration, in separate
+terminals from the repo (do not use the `.env`-loading convenience scripts):
+
+```sh
+env -i PATH="$PATH" PORT=5184 AUTOSAVE=0 AGENT_LOOP_AUTOSTART=0 \
+  AGENT_LOOP_CHECKPOINT_FILE=./tmp/font-resilience/checkpoints.json \
+  node --import tsx src/server.ts
+env -i PATH="$PATH" SERVER_PORT=5184 \
+  node node_modules/vite/bin/vite.js --config vite.web3d.config.ts --port 5185 --strictPort
+pnpm exec tsx tests/playtests/font-resilience.ts
+```
+
+Stop both servers after checking the artifacts under
+`tmp/playtest-artifacts/font-resilience/`. The committed evidence below is a
+local, scripted Chrome/SwiftShader run; it does not qualify live deployment,
+model-backed conversation, voice, real GPU performance, or gameplay enjoyment.
+External model preloads were attempted by the existing client and blocked;
+no model was downloaded. Optional font labels remain unavailable in these shots.
+
+- [Town with blocked fonts](evidence/font-resilience-2026-09-07/blocked-fonts-town.png)
+- [After physical movement](evidence/font-resilience-2026-09-07/blocked-fonts-walked.png)
+- [Bounded notice log](evidence/font-resilience-2026-09-07/bounded-notices.png)
+- [Machine-readable receipt](evidence/font-resilience-2026-09-07/receipt.json)
+
+Validation: `pnpm verify:readiness` passes (477 tests in 65 files, typecheck,
+lint and production build); `pnpm size` passes (JS 4.51MB/5MB, CSS 8.4kB/50kB).
+The focused notice/world-store suite passes 8 tests. Existing lint/build
+warnings remain. [Issue #30](https://github.com/sarthakagrawal927/aliveville/issues/30)
+retains the live, parity, model and human qualification gates. Optional
+[ImgBot PR #29](https://github.com/sarthakagrawal927/aliveville/pull/29) was declined
+in owner review; its marketing and original screenshot changes were not merged.

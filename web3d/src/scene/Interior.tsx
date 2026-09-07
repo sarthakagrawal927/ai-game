@@ -1,4 +1,5 @@
-import { Billboard, Text } from '@react-three/drei';
+import { SceneText } from '../scene/SceneText.tsx';
+import { Billboard } from '@react-three/drei';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { memo, Suspense, useMemo } from 'react';
 import * as THREE from 'three';
@@ -225,7 +226,7 @@ export const Interior = memo(function Interior({
       <RoomLighting interior={interior} cx={cx} />
 
       <Billboard position={[cx, wallHeight + 1.2, cz]}>
-        <Text
+        <SceneText
           fontSize={0.7}
           color="#ffffff"
           outlineWidth={0.04}
@@ -233,7 +234,7 @@ export const Interior = memo(function Interior({
           anchorX="center"
         >
           {interior.label}
-        </Text>
+        </SceneText>
       </Billboard>
 
       {/* inhabitant NPC rendered as a decorative character at their anchor */}
