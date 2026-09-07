@@ -69,6 +69,17 @@ all ran locally.
 
 ![Scripted conversation with Pip](./evidence/setup-2026-09-07/talk-memory.png)
 
+These core-loop captures preceded the separate backend-label correction below.
+The final HUD reads the existing read-only dialogue-history endpoint. A reported
+`llm: false` becomes **Scripted dialogue**; `llm: true` becomes **Server AI
+configured**. An unreported or failed probe stays **Dialogue mode unknown**. A
+ready browser model remains **WebGPU · local**, with an **on-device** badge.
+No model invocation is required to identify the configured mode, and the label
+does not claim a successful inference. The local runtime returned `llm: false`
+and `story: true`; the corrected label was verified in the browser.
+
+![Corrected scripted mode label](./evidence/setup-2026-09-07/backend-label.png)
+
 [Structured receipt](./evidence/setup-2026-09-07/receipt.json) retains the
 before/after measurements, built-client check, movement observations, dialogue,
 and memory comparison. Detailed synthetic request/state evidence remains local
@@ -91,9 +102,9 @@ under `tmp/shareability-2026-09-07/`.
   offline scene.
 - Headless SwiftShader ran roughly 6–11 FPS during the inspected scene. This is
   geometry/interaction evidence, not a hardware GPU performance verdict.
-- Ambient cutscenes still interrupted movement, and the HUD says “cloud LLM”
-  even in this scripted session. Those presentation and pacing gaps remain;
-  the label is not proof of model execution.
+- Ambient cutscenes still interrupted movement. That pacing gap remains.
+  The inaccurate cloud label observed during the core-loop run was subsequently
+  corrected and verified as described above.
 - A local OPFS restoration does not qualify the deployed Worker route. The
   documented Worker/local-server parity gap remains, including `/api/load`.
   No production configuration, Worker, marketing site, or deployment changed.
@@ -103,7 +114,9 @@ under `tmp/shareability-2026-09-07/`.
 `pnpm verify:readiness` passed: typecheck, Biome, **474 tests across 64 files**,
 and the production 3D build. The focused world-store/Rival checks passed 16
 tests. Existing informational lint notices and large bundle warnings remain.
-The docs validator and `git diff --check` passed.
+The docs validator and `git diff --check` passed. An initial pushed receipt
+needed Biome JSON formatting; the follow-up corrected it and reran the full
+local readiness gate after the backend-label change.
 
 Task reconciliation found **0 open GitHub issues, 0 open PRs, 0 closures**.
 The old documentation-consolidation entry was stale and is now marked complete;

@@ -90,9 +90,10 @@ qualify the deployed game. Retain these gates:
 - An authorized deployment and a fresh live-session verification of this fix.
 - Worker/local-server parity, including browser-save restoration via `/api/load`.
 - Model-backed conversation, long-term recall, and real-device voice/GPU checks.
-  The scripted-mode HUD still says "cloud LLM"; that label is not evidence that
-  a model ran. Automatic model preloads and external font availability also need
-  review before claiming a resilient guest experience.
+  The HUD now reports scripted dialogue from the server response, keeps unknown
+  mode explicit, and labels server AI as configured rather than verified.
+  Automatic model preloads and external font availability still need review
+  before claiming a resilient guest experience.
 
 The previously listed documentation consolidation is complete and validated;
 future vendor/shop and interior ideas remain deferred behind the human verdict.

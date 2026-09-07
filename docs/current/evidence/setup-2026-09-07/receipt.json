@@ -134,10 +134,7 @@
   "visualReview": {
     "reviewer": "Codex image inspection",
     "status": "passed for rendered town and legible scripted conversation",
-    "images": [
-      "town-rendered.png",
-      "talk-memory.png"
-    ],
+    "images": ["town-rendered.png", "talk-memory.png"],
     "performance": "Headless SwiftShader; observed 6-11 FPS is not a real GPU benchmark."
   },
   "checks": {
@@ -150,7 +147,15 @@
   "gates": [
     "No deployment/live verification",
     "No model-backed freeform dialogue, voice or long-term recall proof",
-    "Existing UI says cloud LLM even in this scripted mode",
     "Core fun verdict, pacing, prompt model downloads and font availability need further review"
-  ]
+  ],
+  "backendLabel": {
+    "status": "passed",
+    "label": "Scripted dialogue",
+    "reportedLlm": false,
+    "reportedStory": true,
+    "source": "Existing read-only /api/dialogue/history endpoint",
+    "image": "backend-label.png",
+    "meaning": "Runtime reports scripted dialogue. Server AI configured is not a successful-inference claim."
+  }
 }
